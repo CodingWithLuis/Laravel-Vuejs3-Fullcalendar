@@ -31040,7 +31040,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fullcalendar_core_vdom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @fullcalendar/core/vdom */ "./node_modules/@fullcalendar/core/vdom.js");
 /* harmony import */ var _fullcalendar_vue3__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fullcalendar/vue3 */ "./node_modules/@fullcalendar/vue3/dist/main.js");
 /* harmony import */ var _fullcalendar_daygrid__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fullcalendar/daygrid */ "./node_modules/@fullcalendar/daygrid/main.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
  // solves problem with Vite
+
 
 
 
@@ -31054,12 +31057,12 @@ __webpack_require__.r(__webpack_exports__);
       calendarOptions: {
         plugins: [_fullcalendar_daygrid__WEBPACK_IMPORTED_MODULE_2__["default"]],
         initialView: 'dayGridMonth',
-        events: [{
-          title: 'event 1',
-          date: '2021-11-11'
-        }, {
-          title: 'event 2',
-          date: '2021-11-05'
+        eventSources: [{
+          events: function events(fetchInfo, successCallback, failureCallback) {
+            axios__WEBPACK_IMPORTED_MODULE_3___default().get('/api/events').then(function (response) {
+              successCallback(response.data.data);
+            });
+          }
         }]
       }
     };
@@ -31081,13 +31084,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Hello world ");
-
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_FullCalendar = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("FullCalendar");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_FullCalendar, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_FullCalendar, {
     options: $data.calendarOptions
   }, null, 8
   /* PROPS */

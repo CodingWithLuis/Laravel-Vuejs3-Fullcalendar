@@ -14,9 +14,9 @@ class EventFactory extends Factory
     public function definition()
     {
         return [
-            'event' => $this->faker->word(),
-            'date_start' => $this->faker->dateTimeBetween('2021-11-8', '2021-11-10'),
-            'date_end' => $this->faker->dateTimeBetween('2021-11-10', '2021-11-14'),
+            'title' => $this->faker->word(),
+            'start' => $this->faker->dateTimeBetween('2021-11-8', '2021-11-10'),
+            'end' => $this->faker->dateTimeBetween('2021-11-10', '2021-11-14'),
         ];
     }
 }
